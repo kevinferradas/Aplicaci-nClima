@@ -1,8 +1,6 @@
-// https://api.openweathermap.org/data/2.5/weather?q=Barcelona&appid=1478ad26c8d8533a468a8f1b34d91a65&units=metric&lang=es
 
 import key from './key.js'
 
-const appid = "1478ad26c8d8533a468a8f1b34d91a65"
 const ciudad ="Barcelona"
 const idioma="es"
 let url = `https://api.openweathermap.org/data/2.5/weather?appid=${key}&units=metric&lang=${idioma}&q=${ciudad}`

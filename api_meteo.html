@@ -9,13 +9,35 @@
 </head>
 <body>
     <header>
-        <div>
+        <div class ="encabezado">
             <h1>MeteoApp</h1>
-        </div>
-        
-        
+        </div>   
     </header>
-    <div id="divDatos"></div>
+    <main>
+        <section>
+            <form action="#" name="formClima" class="formClima">
+                <p>Introducir ciudad y escoger idioma </p>
+                <div class = "divClima">
+                    <input type="text" 
+                    name="ciudad" 
+                    id="ciudad"
+                    placeholder="Ingrese la ciudad">
+                    <select name="idioma" >
+                        <option value="es" selected>Castellano </option>
+                        <option value="ca" >Catalán</option>
+                        <option value="en" >Inglés</option>
+                    </select>
+                <input type="submit" value="Ver clima ">
+                </div>
+            </form>   
+        </section>
+        <section>
+            <div id="divDatos"></div>
+        </section>
+    </main>
+    
+<span></span>
+    
 
 </body>
 </html>

@@ -6,6 +6,9 @@ const formClima =document.forms["formClima"]
 // Gestión de fechas
 let hoy = new Date()
 hoy = hoy.toISOString().split('T')[0] // 2025-03-28
+
+let hora = hoy.getHours()
+
 formClima.addEventListener("submit", (e) => {
 
     e.preventDefault() 
@@ -50,7 +53,7 @@ formClima.addEventListener("submit", (e) => {
     else if (rango == "2") {
 
         divDatos.innerHTML =""
-
+        
         fetch(url)
         .then(data => data.json())
         .then(data => {
@@ -58,7 +61,7 @@ formClima.addEventListener("submit", (e) => {
             // divDatos.innerHTML +=`<p>${data["list"][0]["dt_txt"].split(' ')[0]} </p>`
             data["list"].forEach(element => {
                 if (element["dt_txt"].split(' ')[0] == hoy){
-                
+                    
                     divDatos.innerHTML +=`<p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>`
                     divDatos.innerHTML +=`<p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p>`
                     divDatos.innerHTML += `<p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p>`

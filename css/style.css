@@ -39,13 +39,18 @@ main section {
     max-width: inherit;
   }
 
-main section:nth-child(2){
+main section:nth-child(3){
     margin-top: 2rem;
     
     align-items: center;
     justify-content: center;
 }
 
+.rango {
+    margin-top: 1rem;
+    margin-bottom: 1rem ;
+    text-align: center;
+}
 .divClima {
     display: flex;
     justify-content: flex-start; /* Alineamos los elementos al inicio */

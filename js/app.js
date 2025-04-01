@@ -3,14 +3,23 @@ import key from './key.js'
 
 
 const formClima =document.forms["formClima"]
-// Gestión de fechas
-let hoy = new Date()
-hoy = hoy.toISOString().split('T')[0] // 2025-03-28
+const divDatos=document.getElementById("divDatos") 
 
-let hora = hoy.getHours()
+const climaPordias = document.forms["climaPordias"]
+const divDias = document.getElementById("divDias")
+
+let hoy = new Date()
+hoy = hoy.toISOString().split('T')[0]
+
+
+// Gestión de fechas
+ // 2025-03-28
+
+// let hora = hoy.getHours()
 
 formClima.addEventListener("submit", (e) => {
 
+   
     e.preventDefault() 
 
     let ciudad = formClima["ciudad"].value
@@ -26,81 +35,124 @@ formClima.addEventListener("submit", (e) => {
     let url = `https://api.openweathermap.org/data/2.5/forecast?appid=${key}&units=metric&lang=${idioma}&q=${ciudad}`
 
 
-    const divDatos=document.getElementById("divDatos")
+   
     // alert(rango)
     if (rango == "1"){
-        divDatos.innerHTML =""
+        
 
+        divDatos.innerHTML = ""
         fetch(url)
         .then(data => data.json())
         .then(data => {
-        // divDatos.innerHTML +=`<p> <span id="parametros"> Ciudad </span>: ${data.name}</p>`
-        divDatos.innerHTML +=`<p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Temperatura actual </span>: ${data["list"][0]['main']['temp']} ºC</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p>`
-        divDatos.innerHTML +=`<p><span id="parametros"> Precipitación </span>: ${data["list"][0]['pop']} % </p>`
-        divDatos.innerHTML += `<p><span id="parametros"> Descripción </span> : ${data['list'][0]["weather"][0]['description']}</p>`
-        divDatos.innerHTML += `<div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>`
-    
+        let mensajeClima =`<div>
+        <p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>
+        <p><span id="parametros"> Temperatura actual </span>: ${data["list"][0]['main']['temp']} ºC</p>
+        <p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>
+        <p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>
+        <p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>
+        <p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>
+        <p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>
+        <p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p>
+        <p><span id="parametros"> Precipitación </span>: ${data["list"][0]['pop']} % </p>
+        <p><span id="parametros"> Descripción </span> : ${data['list'][0]["weather"][0]['description']}</p>
+        <div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>
+        </div>`
+        divDatos.innerHTML += mensajeClima
+        divDatos.style.display = "flex"
+        
 
-}) 
+}
+) 
+
     }
     else if (rango == "2") {
 
+        let listaClima = []
         divDatos.innerHTML =""
-        
+
         fetch(url)
         .then(data => data.json())
         .then(data => {
-            // console.log(data["list"]);
-            // divDatos.innerHTML +=`<p>${data["list"][0]["dt_txt"].split(' ')[0]} </p>`
+         
             data["list"].forEach(element => {
+                let hora = element["dt_txt"].split(' ')[1].slice(0,5)
                 if (element["dt_txt"].split(' ')[0] == hoy){
+
+                    let mensajeClima =`<div class ="climaPorhoras">
                     
-                    divDatos.innerHTML +=`<p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p>`
-                    divDatos.innerHTML += `<p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Precipitación </span>: ${element['pop']} % </p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`        
+                    <div><p> <span id="parametros"> Hora</span>: ${hora}</p></div>
+                    <div><p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p></div>
+                    <div><p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p></div>
+                    <div><p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p></div>
+                    <div><p><span id="parametros"> Precipitación </span>: ${element['pop']} % </p></div>
+                    <div><p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p></div>
+                    </div>`
+                    //<p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>
+                    // <p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>`
+                    // <p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>`
+                    // <p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
+                    // <p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`        
                     // divDatos.innerHTML += `<div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>`
+                    listaClima.push(mensajeClima)
                 }     
-            });     
+            });  
+            
+            listaClima.forEach(mensajes => {
+                divDatos.innerHTML += mensajes
+            })
+            
+            divDatos.style.display = "flex";
+
+            
         })
     }
 
     else {
 
+        divDias.innerHTML =""
         divDatos.innerHTML =""
 
         fetch(url)
         .then(data => data.json())
         .then(data => {
-            // console.log(data["list"]);
-            // divDatos.innerHTML +=`<p>${data["list"][0]["dt_txt"].split(' ')[0]} </p>`
+           
+            divDias.innerHTML+= 
+
+            
+                <p>Introducir ciudad y escoger idioma </p>
+                <div class = "divClima">
+                    <input type="text" 
+                    name="ciudad" 
+                    id="ciudad"
+                    placeholder="Ingrese la ciudad">
+                    <select name="idioma" >
+                        <option value="es" selected>Castellano </option>
+                        <option value="ca" >Catalán</option>
+                        <option value="en" >Inglés</option>
+                    </select>
+                <input type="submit" value="Ver clima ">
+              
+        
+
+
+
+
             data["list"].forEach(element => {
+
+
+
+
+
+
+
                 if (element["dt_txt"].split(' ')[0] == hoy){
                 
-                    divDatos.innerHTML +=`<p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p>`
-                    divDatos.innerHTML += `<p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Precipitación </span>: ${element['pop']} % </p>`
-                    divDatos.innerHTML +=`<p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
-                    // divDatos.innerHTML +=`<p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`        
-                    // divDatos.innerHTML += `<div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>`
+
+
+
+
+
+
                 }     
             });     
         })

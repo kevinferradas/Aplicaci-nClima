@@ -98,6 +98,10 @@ main section:nth-child(3){
 }
 
 #divDatos {
+    display: none;
+    flex-direction: column; /* Apila los divs verticalmente */
+    gap: 10px; /* Espaciado entre los divs */
+    align-items: center; /* Centra los divs horizontalmente */
     padding: 1rem;
     img {
         width: 100px;
@@ -109,4 +113,14 @@ main section:nth-child(3){
 
 #parametros {
     font-weight: 600;
+}
+
+.climaPorhoras {
+    width: 100%;
+    border: 2px solid #000; /* Borde negro de 2px */
+    border-radius: 8px; /* Bordes redondeados */ 
+}
+
+.sectionClimaDia{
+    display: none;
 }

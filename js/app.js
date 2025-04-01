@@ -8,6 +8,7 @@ const divDatos=document.getElementById("divDatos")
 const climaPordias = document.forms["climaPordias"]
 const divDias = document.getElementById("divDias")
 
+const sectionClimaDia = document.getElementById('sectionClimaDia')
 let hoy = new Date()
 hoy = hoy.toISOString().split('T')[0]
 
@@ -36,7 +37,7 @@ formClima.addEventListener("submit", (e) => {
 
 
    
-    // alert(rango)
+    
     if (rango == "1"){
         
 
@@ -108,59 +109,30 @@ formClima.addEventListener("submit", (e) => {
     }
 
     else {
-
-        divDias.innerHTML =""
+        let listaDias = []
         divDatos.innerHTML =""
+        divDias.innerHTML ='<p>Introducir ciudad y escoger idioma </p>'
+        divDias.innerHTML = '<select name="diaClima" >'
+        
 
         fetch(url)
         .then(data => data.json())
         .then(data => {
-           
-            divDias.innerHTML+= 
+        data["list"].forEach(element => {
+            let dia = element["dt_txt"].split(' ')[0]
+            if (!listaDias.includes(dia)) listaDias.push(dia) })
 
-            
-                <p>Introducir ciudad y escoger idioma </p>
-                <div class = "divClima">
-                    <input type="text" 
-                    name="ciudad" 
-                    id="ciudad"
-                    placeholder="Ingrese la ciudad">
-                    <select name="idioma" >
-                        <option value="es" selected>Castellano </option>
-                        <option value="ca" >Catalán</option>
-                        <option value="en" >Inglés</option>
-                    </select>
-                <input type="submit" value="Ver clima ">
-              
+        listaDias.forEach(dias => {
+            divDias.innerHTML += `<option value="${dias}" >${dias} </option>`
+        })
+        
+        divDias.innerHTML +=  '</select><input type="submit" value="Elegir día">'
+        sectionClimaDia.style.display = "flex"      
         
 
-
-
-
-            data["list"].forEach(element => {
-
-
-
-
-
-
-
-                if (element["dt_txt"].split(' ')[0] == hoy){
-                
-
-
-
-
-
-
-                }     
+ 
             });     
-        })
-
-    }
-
-       
-    
+        }  
 })
 
 let rangoOpcion = document.getElementById("rangoOpcion")

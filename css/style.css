@@ -121,6 +121,35 @@ main section:nth-child(3){
     border-radius: 8px; /* Bordes redondeados */ 
 }
 
-.sectionClimaDia{
+#sectionClimaDia{
     display: none;
+    justify-content: center;  /* Centra el contenido en el eje horizontal */
+    align-items: center;      /* Centra el contenido en el eje vertical */
+    /* height: 100vh;  */
+
+    /* Opcional: darle un poco de margen y estilo al form */
+form {
+    text-align: center;       /* Centra los elementos dentro del formulario */
+    padding: 20px;            /* Agrega espacio alrededor del formulario */
+    border: 1px solid #ccc;  /* Borde alrededor del formulario */
+    border-radius: 8px;      /* Esquinas redondeadas */
+}
+
+input[type="submit"] {
+    width: 150px; /* Tamaño del botón */
+    padding: 10px;
+    font-size: 14px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-top-right-radius: 20px; /* Borde superior derecho redondeado */
+    border-bottom-right-radius: 20px; /* Borde inferior derecho redondeado */
+    cursor: pointer;
+}
+
+/* Efecto hover para el botón */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+    
 }

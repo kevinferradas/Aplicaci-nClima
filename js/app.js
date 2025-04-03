@@ -110,10 +110,10 @@ formClima.addEventListener("submit", (e) => {
 
     else {
         let listaDias = []
-        divDatos.innerHTML =""
-        divDias.innerHTML ='<p>Introducir ciudad y escoger idioma </p>'
-        divDias.innerHTML = '<select name="diaClima" >'
-        
+        divDatos.innerHTML = ""
+        divDias.innerHTML = ""
+     
+        let listaClimadia = []
 
         fetch(url)
         .then(data => data.json())
@@ -121,14 +121,47 @@ formClima.addEventListener("submit", (e) => {
         data["list"].forEach(element => {
             let dia = element["dt_txt"].split(' ')[0]
             if (!listaDias.includes(dia)) listaDias.push(dia) })
-
+            let mensajeClimadia = '<p>Escoger día </p><select name="diaClima" >'
         listaDias.forEach(dias => {
-            divDias.innerHTML += `<option value="${dias}" >${dias} </option>`
+            mensajeClimadia += `<option value="${dias}" >${dias} </option>`
         })
         
-        divDias.innerHTML +=  '</select><input type="submit" value="Elegir día">'
+        mensajeClimadia +=  '</select><input type="submit" value="Elegir día">'
+        divDias.innerHTML += mensajeClimadia
         sectionClimaDia.style.display = "flex"      
+
         
+        data["list"].forEach(element => {
+            let hora = element["dt_txt"].split(' ')[1].slice(0,5)
+            if (element["dt_txt"].split(' ')[0] == hoy){
+
+                let mensajeClima =`<div class ="climaPorhoras">
+                
+                <div><p> <span id="parametros"> Hora</span>: ${hora}</p></div>
+                <div><p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p></div>
+                <div><p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p></div>
+                <div><p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p></div>
+                <div><p><span id="parametros"> Precipitación </span>: ${element['pop']} % </p></div>
+                <div><p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p></div>
+                </div>`
+                //<p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>
+                // <p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>`
+                // <p><span id="parametros"> Humedad </span>: ${data["list"][0]['main']["humidity"]} %</p>`
+                // <p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
+                // <p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`        
+                // divDatos.innerHTML += `<div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>`
+                listaClima.push(mensajeClima)
+            }     
+        });  
+        
+        listaClima.forEach(mensajes => {
+            divDatos.innerHTML += mensajes
+        })
+        
+        divDatos.style.display = "flex";
+        
+
+
 
  
             });     

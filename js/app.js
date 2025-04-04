@@ -19,7 +19,6 @@ hoy = hoy.toISOString().split('T')[0]
 // let hora = hoy.getHours()
 
 formClima.addEventListener("submit", (e) => {
-
    
     e.preventDefault() 
 
@@ -40,6 +39,7 @@ formClima.addEventListener("submit", (e) => {
     
     if (rango == "1"){
         
+        sectionClimaDia.style.display = "none"   
 
         divDatos.innerHTML = ""
         fetch(url)
@@ -68,6 +68,8 @@ formClima.addEventListener("submit", (e) => {
     }
     else if (rango == "2") {
 
+        sectionClimaDia.style.display = "none"      
+
         let listaClima = []
         divDatos.innerHTML =""
 
@@ -83,7 +85,7 @@ formClima.addEventListener("submit", (e) => {
                     
                     <div><p> <span id="parametros"> Hora</span>: ${hora}</p></div>
                     <div><p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p></div>
-                    <div><p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p></div>
+                    <div><p><span id="parametros"> Temperatura</span>: ${element['main']['temp']} ºC</p></div>
                     <div><p><span id="parametros"> Descripción </span> : ${element["weather"][0]['description']}</p></div>
                     <div><p><span id="parametros"> Precipitación </span>: ${element['pop']} % </p></div>
                     <div><p><span id="parametros"> Viento </span>: ${data["list"][0]['wind']["speed"]} m/s</p></div>
@@ -109,11 +111,12 @@ formClima.addEventListener("submit", (e) => {
     }
 
     else {
+   
         let listaDias = []
         divDatos.innerHTML = ""
         divDias.innerHTML = ""
      
-        let listaClimadia = []
+        
 
         fetch(url)
         .then(data => data.json())
@@ -130,13 +133,21 @@ formClima.addEventListener("submit", (e) => {
         divDias.innerHTML += mensajeClimadia
         sectionClimaDia.style.display = "flex"      
 
-        
+        climaPordias.addEventListener('submit',(e) => {
+            e.preventDefault()
+            divDatos.innerHTML = ""
+            let listaClimadia = [] 
+            
+
         data["list"].forEach(element => {
+
+            
+            let diaElegido = climaPordias["diaClima"].value
             let hora = element["dt_txt"].split(' ')[1].slice(0,5)
-            if (element["dt_txt"].split(' ')[0] == hoy){
+            if (element["dt_txt"].split(' ')[0] == diaElegido){
 
                 let mensajeClima =`<div class ="climaPorhoras">
-                
+                <div><p> <span id="parametros"> Día </span>: ${diaElegido}</p></div>
                 <div><p> <span id="parametros"> Hora</span>: ${hora}</p></div>
                 <div><p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p></div>
                 <div><p><span id="parametros"> Temperatura actual </span>: ${element['main']['temp']} ºC</p></div>
@@ -150,11 +161,11 @@ formClima.addEventListener("submit", (e) => {
                 // <p><span id="parametros"> Nubosidad </span>: ${data["list"][0]['clouds']["all"]} %</p>`
                 // <p><span id="parametros"> Visibilidad </span>: ${data["list"][0]['visibility']} km</p>`        
                 // divDatos.innerHTML += `<div><img src= "https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][1]["weather"][0]['icon']}.svg"></div>`
-                listaClima.push(mensajeClima)
+                listaClimadia.push(mensajeClima)
             }     
         });  
         
-        listaClima.forEach(mensajes => {
+        listaClimadia.forEach(mensajes => {
             divDatos.innerHTML += mensajes
         })
         
@@ -164,7 +175,10 @@ formClima.addEventListener("submit", (e) => {
 
 
  
-            });     
+            });
+
+    })
+             
         }  
 })
 

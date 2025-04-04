@@ -105,7 +105,7 @@ main section:nth-child(3){
     padding: 1rem;
     img {
         width: 100px;
-    };
+    }
     text-align: center;
     background-color: lightblue;
     }
@@ -125,7 +125,7 @@ main section:nth-child(3){
     display: none;
     justify-content: center;  /* Centra el contenido en el eje horizontal */
     align-items: center;      /* Centra el contenido en el eje vertical */
-    /* height: 100vh;  */
+    margin-bottom: 2rem;
 
     /* Opcional: darle un poco de margen y estilo al form */
 form {

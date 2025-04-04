@@ -46,10 +46,12 @@ formClima.addEventListener("submit", (e) => {
         .then(data => data.json())
         .then(data => {
         let mensajeClima =`<div>
-        <div id = "sensacionTermica">
+        <div id >
+        <div id="sensacionTermica" >
         <p><span id="parametros"> Sensación térmica </span>: ${data["list"][0]['main']["feels_like"]} ºC</p>
         </div>
-        <div id = "otrosParametros>
+        </div>
+        <div id = "otrosParametros">
         <p> <span id="parametros"> Ciudad </span>: ${data["city"]["name"]}</p>
         <p><span id="parametros"> Temperatura actual </span>: ${data["list"][0]['main']['temp']} ºC</p>
         <p><span id="parametros"> Máx. / Mín. </span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>

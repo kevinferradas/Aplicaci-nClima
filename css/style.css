@@ -3,20 +3,27 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
 }
 
+body {
+    background-color: #5d7f3f; /* Fondo verde naturaleza */
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo del encabezado */
 h1 {
     font-size: 30px;
-
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-h2{
-        margin-top: 1rem ;
-        border-bottom: 2px solid darksalmon;   
-}
 .encabezado {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -24,12 +31,8 @@ h2{
     align-items: center;
     justify-content: center;
 }
-/* Ajustamos el tamaño y el espacio entre el icono y el texto */
-.encabezado i {
-    margin-left: 10px;
-    font-size: 30px; /* Tamaño del icono */
-}
 
+/* Formulario centrado */
 main {
     margin: 0 auto;
     max-width: 800px;
@@ -37,136 +40,168 @@ main {
 
 main section {
     max-width: inherit;
-  }
+}
 
-main section:nth-child(3){
-    margin-top: 2rem;
-    
-    align-items: center;
+#formularioSection {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 60vh; /* Centrado vertical */
+}
+
+.formClima {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.divClima {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+}
+
+.divClima input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.divClima select {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.divClima input[type="submit"] {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.divClima input[type="submit"]:hover {
+    background-color: #367a3c;
 }
 
 .rango {
     margin-top: 1rem;
-    margin-bottom: 1rem ;
+    margin-bottom: 1rem;
     text-align: center;
-}
-.divClima {
-    display: flex;
-    justify-content: flex-start; /* Alineamos los elementos al inicio */
-    align-items: center;
-    gap: 0; /* Elimina el espacio entre los elementos */
-
-    input[type="text"] {
-        width: 500px; /* Longitud mayor que el select y el boton */
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-top-left-radius: 20px;  /* Borde superior izquierdo redondeado */
-        border-bottom-left-radius: 20px; /* Borde inferior izquierdo redondeado */
-    }
-
-    select {
-        width: 150px; /* Ancho del select */
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    /* Ajustamos el botón de submit */
-    input[type="submit"] {
-        width: 150px; /* Tamaño del botón */
-        padding: 10px;
-        font-size: 14px;
-        background-color: gray;
-        color: white;
-        border: none;
-        border-top-right-radius: 20px; /* Borde superior derecho redondeado */
-        border-bottom-right-radius: 20px; /* Borde inferior derecho redondeado */
-        cursor: pointer;
-    }
-
-    /* Efecto hover para el botón */
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-}
-
-.formClima{
-    p {
-        text-align: center;
-    }
 }
 
 #divDatos {
     display: none;
-    flex-direction: column; /* Apila los divs verticalmente */
-    gap: 10px; /* Espaciado entre los divs */
-    align-items: center; /* Centra los divs horizontalmente */
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
     padding: 1rem;
-    img {
-        width: 100px;
-    }
-    text-align: center;
-    background-color: lightblue;
-    }
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
 
+#divDatos img {
+    width: 100px;
+}
 
 #parametros {
     font-weight: 600;
 }
 
-.climaPorhoras {
-    width: 100%;
-    border: 2px solid #000; /* Borde negro de 2px */
-    border-radius: 8px; /* Bordes redondeados */ 
+.clima-container {
+    padding: 1rem;
+    font-family: Arial, sans-serif;
 }
 
-#sectionClimaDia{
-    display: none;
-    justify-content: center;  /* Centra el contenido en el eje horizontal */
-    align-items: center;      /* Centra el contenido en el eje vertical */
-    margin-bottom: 2rem;
+.clima-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
 
-    /* Opcional: darle un poco de margen y estilo al form */
+.columna-izquierda, .columna-derecha {
+    flex: 1;
+    min-width: 280px;
+}
+
+#sensacionTermica {
+    margin-bottom: 2rem;
+}
+
+#sensacionTermica .valor-destacado {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #d9534f;
+    margin-top: 0.5rem;
+}
+
+.param-col p, #sensacionTermica p, #descripcion p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+}
+
+#descripcion {
+    text-align: right;
+    margin-bottom: 2rem;
+}
+
+#descripcion img {
+    width: 50px;
+    height: 50px;
+    margin-top: 0.5rem;
+}
+
+#parametros {
+    font-weight: 600;
+}
+
+/* Sección para el clima por días */
+#sectionClimaDia {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 form {
-    text-align: center;       /* Centra los elementos dentro del formulario */
-    padding: 20px;            /* Agrega espacio alrededor del formulario */
-    border: 1px solid #ccc;  /* Borde alrededor del formulario */
-    border-radius: 8px;      /* Esquinas redondeadas */
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
 input[type="submit"] {
-    width: 150px; /* Tamaño del botón */
+    width: 150px;
     padding: 10px;
     font-size: 14px;
     background-color: gray;
     color: white;
     border: none;
-    border-top-right-radius: 20px; /* Borde superior derecho redondeado */
-    border-bottom-right-radius: 20px; /* Borde inferior derecho redondeado */
+    border-radius: 20px;
     cursor: pointer;
 }
 
-/* Efecto hover para el botón */
 input[type="submit"]:hover {
     background-color: #45a049;
-}
-    
-}
-
-#sensacionTermica {
-    font-size: 50px;
-    font-weight: bold;
-    color: #333;
-    margin: 10px 0;
-}
-
-#otrosParametros {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    font-size: 16px;
-    text-align: left;
-    width: 100%;
-    padding: 10px 0;
 }

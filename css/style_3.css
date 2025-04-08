@@ -1,0 +1,154 @@
+
+/* --------------------- */
+/* Reglas generales      */
+/* --------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+  }
+  
+  h1 {
+    font-size: 30px;
+  }
+  
+  /* Encabezado */
+  .encabezado {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Main */
+  main {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  main section {
+    max-width: inherit;
+  }
+  
+  /* --------------------- */
+  /* Estilos del formulario*/
+  /* --------------------- */
+  .divClima {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+  }
+  
+  .divClima input[type="text"] {
+    width: 500px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
+  .divClima select {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .divClima input[type="submit"] {
+    width: 150px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .divClima input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Rango del formulario */
+  .rango {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  /* --------------------- */
+  /* Contenedor de Clima   */
+  /* --------------------- */
+  /* La estructura principal para el clima de ahora */
+  .clima-container {
+    display: grid;
+    grid-template-areas:
+      "sensation description"
+      "params params";
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 20px;
+    background-color: lightblue;
+  }
+  
+  /* Área Sensación Térmica: esquina superior izquierda */
+  #sensacionTermica {
+    grid-area: sensation;
+    font-size: 2em;
+    align-self: center;
+    justify-self: start;
+  }
+  
+  /* Área Descripción: imagen en esquina superior derecha */
+  #descripcion {
+    grid-area: description;
+    align-self: center;
+    justify-self: end;
+  }
+  
+  #descripcion img {
+    width: 100px;
+    height: auto;
+  }
+  
+  /* Área Otros Parámetros: se distribuyen en dos columnas */
+  #otrosParametros {
+    grid-area: params;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  
+  /* Estilos para cada párrafo en los parámetros */
+  #otrosParametros p,
+  #sensacionTermica p {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+  
+  /* Opcional: Estilo para resaltar etiquetas de parámetros */
+  #parametros {
+    font-weight: 600;
+  }
+  
+  /* --------------------- */
+  /* Estilos específicos   */
+  /* --------------------- */
+  /* En pantallas pequeñas, se adapta a una sola columna */
+  @media (max-width: 600px) {
+    .clima-container {
+      grid-template-areas:
+        "sensation"
+        "description"
+        "params";
+      grid-template-columns: 1fr;
+    }
+    
+    #otrosParametros {
+      grid-template-columns: 1fr;
+    }
+  }
+  

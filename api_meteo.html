@@ -1,63 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App Meteo</title>
     <link rel="stylesheet" href="css/style.css">
     <script defer type="module" src="js/app.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class ="encabezado">
+        <div class="encabezado">
             <h1>MeteoApp</h1>
         </div>   
     </header>
+
     <main>
-        <section>
+        <!-- Formulario centrado -->
+        <section id="formularioSection" class="centrado">
             <form action="#" name="formClima" class="formClima">
-                <p>Introducir ciudad y escoger idioma </p>
-                <div class = "divClima">
-                    <input type="text" 
-                    name="ciudad" 
-                    id="ciudad"
-                    placeholder="Ingrese la ciudad">
-                    <select name="idioma" >
-                        <option value="es" selected>Castellano </option>
-                        <option value="ca" >Catalán</option>
-                        <option value="en" >Inglés</option>
+                <p>Introducir ciudad y escoger idioma</p>
+                <div class="divClima">
+                    <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad" required>
+                    <select name="idioma">
+                        <option value="es" selected>Castellano</option>
+                        <option value="ca">Catalán</option>
+                        <option value="en">Inglés</option>
                     </select>
-                <input type="submit" value="Ver clima ">
+                    <input type="submit" value="Ver clima">
                 </div>
-                <div class = "rango">
+
+                <div class="rango">
                     <label for="range">Seleccione una opción :</label>
-                    <input type="range" 
-                    name="rango" 
-                    id="rangoOpcion" 
-                    min="1" 
-                    max="3"
-                    value = "1">
+                    <input type="range" name="rango" id="rangoOpcion" min="1" max="3" value="1">
                     <span id="opcion">Ahora</span>
                 </div>
             </form>
-
-            <!-- El usuario elige el día en el que está interesado -->
-            <section id = "sectionClimaDia">
-                <form action="#" name="climaPordias">
-                    <div id="divDias"></div>
-                </form>
-            </section>   
         </section>
-       
-        <!-- <label for="range">range</label>
-        <input type="range" name="range" id="range" min="1" max="5"> -->
-        <section>
+
+        <!-- Sección para elegir el día (oculta inicialmente) -->
+        <section id="sectionClimaDia" style="display: none;">
+            <form action="#" name="climaPordias">
+                <div id="divDias"></div>
+            </form>
+        </section>
+
+        <!-- Sección de datos del clima (oculta inicialmente) -->
+        <section id="datosClima" style="display: none;">
             <div id="divDatos"></div>
         </section>
     </main>
-    
-<span></span>
-    
-
 </body>
 </html>

@@ -21,7 +21,7 @@
         <!-- Formulario centrado -->
         <section id="formularioSection" class="centrado">
             <form action="#" name="formClima" class="formClima">
-                <p>Introducir ciudad y escoger idioma</p>
+                <!-- <p>Introducir ciudad y escoger idioma</p> -->
                 <div class="divClima">
                     <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad" required>
                     <select name="idioma">
@@ -33,9 +33,9 @@
                 </div>
 
                 <div class="rango">
-                    <label for="range">Seleccione una opción :</label>
+                    <!-- <label for="range">Modo</label> -->
                     <input type="range" name="rango" id="rangoOpcion" min="1" max="3" value="1">
-                    <span id="opcion">Ahora</span>
+                    <p><span id="opcion">Ahora</span></p>
                 </div>
             </form>
         </section>
@@ -48,7 +48,7 @@
         </section>
 
         <!-- Sección de datos del clima (oculta inicialmente) -->
-        <section id="datosClima" style="display: none;">
+        <section id="datosClima" >
             <div id="divDatos"></div>
         </section>
     </main>

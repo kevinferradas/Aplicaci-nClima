@@ -13,15 +13,18 @@ hoy = hoy.toISOString().split('T')[0];
 // Gestión de fechas
 
 formClima.addEventListener("submit", (e) => {
+    // prevenimos que se la página se recargue por defecto
     e.preventDefault(); 
 
+    // Extraemos los valores del formulario
     let ciudad = formClima["ciudad"].value;
     let idioma = formClima["idioma"].value;
     let rango = formClima['rango'].value;
     
-    // Creamos la URL de la API
+    // URL de la API
     let url = `https://api.openweathermap.org/data/2.5/forecast?appid=${key}&units=metric&lang=${idioma}&q=${ciudad}`;
 
+    alert (url)
     // Limpiamos las previsiones anteriores
     divDatos.innerHTML = "";
     sectionClimaDia.style.display = "none";  
@@ -42,7 +45,7 @@ formClima.addEventListener("submit", (e) => {
                                 <p class="valor-destacado">${data["list"][0]['main']["feels_like"]} ºC</p>
                             </div>
                             <div class="param-col">
-                                <p><i class="fa-solid fa-arrow-up"></i> <span id="parametros">Máx. / Mín.</span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>
+                                <p><i class="fa-solid fa-arrow-up"></i> <span id="parametros">Máx.</span> / <i class="fa-solid fa-arrow-down"></i> <span id="parametros"> Mín.</span>: ${data["list"][0]['main']["temp_max"]}º / ${data["list"][0]['main']['temp_min']}º</p>
                                 <p><i class="fa-solid fa-droplet"></i> <span id="parametros">Humedad</span>: ${data["list"][0]['main']["humidity"]} %</p>
                                 <p><i class="fa-solid fa-eye"></i> <span id="parametros">Visibilidad</span>: ${data["list"][0]['visibility']} km</p>
                             </div>
@@ -51,12 +54,12 @@ formClima.addEventListener("submit", (e) => {
                         <!-- Columna Derecha -->
                         <div class="columna-derecha">
                             <div id="descripcion">
-                                <p><i class="fa-solid fa-cloud"></i> <span id="parametros">Descripción</span>: ${data['list'][0]["weather"][0]['description']}</p>
+                                <p> <span id="parametros">Descripción</span>: ${data['list'][0]["weather"][0]['description']}</p>
                                 <img src="https://www.imelcf.gob.pa/wp-content/plugins/location-weather/assets/images/icons/weather-icons/${data['list'][0]["weather"][0]['icon']}.svg" alt="Icono clima">
                             </div>
                             <div class="param-col">
                                 <p><i class="fa-solid fa-wind"></i> <span id="parametros">Viento</span>: ${data["list"][0]['wind']["speed"]} m/s</p>
-                                <p><span id="parametros">Nubosidad</span>: ${data["list"][0]['clouds']["all"]} %</p>
+                                <p> <i class="fa-solid fa-cloud"></i> <span id="parametros">Nubosidad</span>: ${data["list"][0]['clouds']["all"]} %</p>
                                 <p><i class="fa-solid fa-cloud-rain"></i> <span id="parametros">Precipitación</span>: ${data["list"][0]['pop']} %</p>
                             </div>
                         </div>
@@ -65,6 +68,7 @@ formClima.addEventListener("submit", (e) => {
             `;
             divDatos.innerHTML += mensajeClima;
             divDatos.style.display = "flex";
+
         });
     }
     // Rango por horas

@@ -57,6 +57,7 @@ main section {
     text-align: center;
     width: 100%;
     max-width: 400px;
+    color: black;
 }
 
 .divClima {
@@ -104,15 +105,20 @@ main section {
 
 #divDatos {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
     padding: 1rem;
     background-color: white;
     border-radius: 8px;
     margin-top: 2rem;
-    width: 100%;
-    max-width: 400px;
+    /* width: 90%; */
+    /* max-width: 400px; */
+    color: black;
+    h2 {
+        text-align: center;
+        font-weight: 200;
+    }
 }
 
 #divDatos img {
@@ -143,6 +149,12 @@ main section {
 
 #sensacionTermica {
     margin-bottom: 2rem;
+    p{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0.5rem 0;
+    }
 }
 
 #sensacionTermica .valor-destacado {
@@ -152,7 +164,7 @@ main section {
     margin-top: 0.5rem;
 }
 
-.param-col p, #sensacionTermica p, #descripcion p {
+.param-col p,  #descripcion p {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -205,3 +217,4 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+

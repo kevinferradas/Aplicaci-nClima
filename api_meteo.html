@@ -14,7 +14,6 @@
     <header>
         <div class="encabezado">
             <h1>MeteoApp</h1>
-        </div>   
     </header>
 
     <main>
@@ -24,7 +23,7 @@
                 <!-- <p>Introducir ciudad y escoger idioma</p> -->
                 <div class="divClima">
                     <input type="text" name="ciudad" id="ciudad" placeholder="Ingrese la ciudad" required>
-                    <select name="idioma">
+                    <select name="idioma" title="idioma">
                         <option value="es" selected>Castellano</option>
                         <option value="ca">Catalán</option>
                         <option value="en">Inglés</option>
@@ -41,8 +40,8 @@
         </section>
 
         <!-- Sección para elegir el día (oculta inicialmente) -->
-        <section id="sectionClimaDia" style="display: none;">
-            <form action="#" name="climaPordias">
+        <section id="sectionClimaDia">
+            <form action="#" name="climaPordias" >
                 <div id="divDias"></div>
             </form>
         </section>
@@ -54,3 +53,4 @@
     </main>
 </body>
 </html>
+

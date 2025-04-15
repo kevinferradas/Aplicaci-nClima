@@ -1,10 +1,10 @@
-/* Alineamos el título y el icono horizontalmente */
+/* GENERAL */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 body {
@@ -17,6 +17,20 @@ body {
     align-items: center;
 }
 
+/* Formulario centrado */
+main {
+    
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+main section {
+    max-width: inherit;
+}
+
+/* ############################################################################################################################################################ */
+
+/* ENCABEZADO */
 /* Estilo del encabezado */
 h1 {
     font-size: 30px;
@@ -32,26 +46,21 @@ h1 {
     justify-content: center;
 }
 
-/* Formulario centrado */
-main {
-    margin: 0 auto;
-    max-width: 800px;
-}
 
-main section {
-    max-width: inherit;
-}
+/* ############################################################################################################################################################ */
+
+/* FORMULARIO formClima */
 
 #formularioSection {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh; /* Centrado vertical */
+    /* height: 60vh; Centrado vertical */
 }
 
 .formClima {
     background-color: white;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -68,7 +77,7 @@ main section {
 }
 
 .divClima input[type="text"] {
-    width: 200px;
+    width: 40%;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -76,14 +85,14 @@ main section {
 }
 
 .divClima select {
-    width: 150px;
+    width: 35%;
     padding: 10px;
     font-size: 14px;
     border-radius: 20px;
 }
 
 .divClima input[type="submit"] {
-    width: 150px;
+    width: 25%;
     padding: 10px;
     font-size: 14px;
     background-color: #45a049;
@@ -91,6 +100,7 @@ main section {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    text-align: center;
 }
 
 .divClima input[type="submit"]:hover {
@@ -99,101 +109,19 @@ main section {
 
 .rango {
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     text-align: center;
 }
 
-#divDatos {
-    display: none;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    margin-top: 2rem;
-    /* width: 90%; */
-    /* max-width: 400px; */
-    color: black;
-    h2 {
-        text-align: center;
-        font-weight: 200;
-    }
-}
+/* ############################################################################################################################################################ */
 
-#divDatos img {
-    width: 100px;
-}
-
-#parametros {
-    font-weight: 600;
-}
-
-.clima-container {
-    padding: 1rem;
-    font-family: Arial, sans-serif;
-}
-
-.clima-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
-
-.columna-izquierda, .columna-derecha {
-    flex: 1;
-    min-width: 280px;
-}
-
-#sensacionTermica {
-    margin-bottom: 2rem;
-    p{
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 0.5rem 0;
-    }
-}
-
-#sensacionTermica .valor-destacado {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #d9534f;
-    margin-top: 0.5rem;
-}
-
-.param-col p,  #descripcion p {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0.5rem 0;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 4px;
-}
-
-#descripcion {
-    text-align: right;
-    margin-bottom: 2rem;
-}
-
-#descripcion img {
-    width: 50px;
-    height: 50px;
-    margin-top: 0.5rem;
-}
-
-#parametros {
-    font-weight: 600;
-}
-
-/* Sección para el clima por días */
+/* FORMULARIO2 (POR DÍAS) */
 #sectionClimaDia {
     display: none;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    margin-top: 2rem ;
 }
 
 form {
@@ -218,3 +146,237 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 
+
+/* ############################################################################################################################################################ */
+
+
+/* EN ESTA SECCIÓN SE MUESTRAN LAS PREVISIONES DEL CLIMA */
+
+#divDatos {
+    display: none;
+    /* flex-direction: row; */
+    gap: 10px;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    /* width: 90%; */
+    /* max-width: 400px; */
+    color: black;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    h2 {
+        text-align: center;
+        font-weight: 200;
+        margin-bottom: 1rem ;
+    }
+    i {
+      color: #4d75eb;
+    }
+}
+
+#divDatos img {
+    width: 100px;
+}
+
+/* ############################################################################################################################################################ */
+
+ /* MODALIDAD : AHORA */
+.parametros {
+    font-weight: 600;
+}
+
+
+
+.columna-izquierda, .columna-derecha {
+    flex: 1;
+    min-width: 280px;
+}
+
+#sensacionTermica {
+    margin-bottom: 2rem;
+    height: 40%;
+   /* <-- centra verticalmente */
+    
+    p{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0.5rem 0;
+    }
+}
+
+#sensacionTermica .valor-destacado {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #5d7f3f;
+    margin-top: 0.5rem;
+    border-bottom: none;
+    
+}
+
+.param-col p,  #descripcion p , #sensacionTermica p{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+}
+
+#descripcion {
+    height: 40%;
+    text-align: center;
+    margin-bottom: 2rem;
+;
+    
+
+    img {
+        width: 100px;
+        margin-top: 0.5rem;
+        ;
+    }
+   div {
+text-align: center;
+   }
+}
+
+
+
+.clima-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* ############################################################################################################################################################ */
+
+/* MODALIDAD : POR HORAS */
+
+
+.climaPorhoras{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    align-items: stretch;
+
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+
+    div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #descripcion_horas {
+    gap: 0px;
+    text-align: left ;
+   
+    }
+    span {
+        font-weight: bold;
+        font-size: large;
+    }
+
+    
+}
+
+.divDetalle {
+    display: flex;
+    max-width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    gap: 10%;
+    border-bottom: 1px solid #ccc;
+    
+    div {
+        width: 45%;
+        font-size: .8rem;
+    }
+    
+}
+
+/* ############################################################################################################################################################ */
+
+/* MODALIDAD: POR DÍAS */
+
+
+
+@media (max-width: 900px) {
+    /* Para tablets y teléfonos grandes: reorganizar pero aún mantener algo de horizontalidad si cabe */
+    .clima-flex, .divDetalle {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+
+/* Para pantallas pequeñas de 450px o menos */
+@media (max-width: 450px) {
+    /* Ajuste del contenedor de clima por horas */
+    .climaPorhoras {
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* Espacio entre los elementos */
+    }
+  
+    /* Los elementos de hora y temperatura deben apilarse verticalmente */
+    .climaPorhoras > div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+  
+    /* Agrupar los parámetros en dos filas */
+    .climaPorhoras .parametros {
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* Espacio entre las filas */
+    }
+  
+    /* Primera fila: Sensación térmica y Descripción */
+    .climaPorhoras .parametros > div:nth-child(1) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    /* Segunda fila: Precipitación y Viento */
+    .climaPorhoras .parametros > div:nth-child(2) {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    /* Ajustar detalles por hora */
+    .climaDetalle {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .divDetalle {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    /* Ajustar columnas a tamaño completo */
+    .columna-izquierda, .columna-derecha {
+      width: 100%;
+    }
+  
+    /* Botón de toggle */
+    .btn-toggle {
+      align-self: center;
+      width: 100%;
+    }
+  }
+  
+  
